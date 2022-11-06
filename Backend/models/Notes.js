@@ -19,6 +19,10 @@ const NotesSchema = new Schema(
             type: String,
             default: "General"
         },
+        favorite: {
+            type: Boolean,
+            default: false
+        },
     },
     { timestamps: true }
 );

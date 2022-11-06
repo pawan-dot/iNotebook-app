@@ -1,16 +1,16 @@
-// const mongoose = require('mongoose');
-// const mongoUrl = "mongodb://localhost:27017//iNotebook";
+require('dotenv').config()
 
-// const connectToMongo = () => {
-//     mongoose.connect(mongoUrl, () => {
-//         console.log("connected")
-//     })
-
-// }
+// console.log(process.env.DB_URL)
 const mongoose = require("mongoose");
-const url = "mongodb://localhost:27017/iNotebook";
-mongoose.connect(url, {}).then(() => {
-    console.log("connection done");
-})
+// const url = process.env.DB_URL;
+// mongoose.connect(process.env.DB_URL, {}).then(() => {
+//     console.log("connection done");
+// })
 
-//module.exports = connectToMongo;
+//module.exports = connectToMongo
+exports.connectDatabase = () => {
+    mongoose
+        .connect(process.env.DB_URL, {})
+        .then((con) => console.log(`Database Connected: ${con.connection.host}`))
+        .catch((err) => console.log(err));
+};
